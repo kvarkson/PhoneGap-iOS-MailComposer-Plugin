@@ -26,12 +26,12 @@
 @implementation MailComposer 
 
 - (void)showMailComposer:(CDVInvokedUrlCommand *)command {
-    if ([command.arguments lenght]) {
+    if ([command.arguments count]) {
         NSDictionary *parameters = command.arguments[0];
         [self showEmailComposerWithParameters:parameters];
     }
     else {
-        NSLog(@"warnibg: missed arguments");
+        NSLog(@"warning: missed arguments");
     }
 }
 
@@ -115,7 +115,7 @@
 			webviewResult = RETURN_CODE_EMAIL_SAVED;
             break;
         case MFMailComposeResultSent:
-			webviewResult =RETURN_CODE_EMAIL_SENT;
+			webviewResult = RETURN_CODE_EMAIL_SENT;
             break;
         case MFMailComposeResultFailed:
             webviewResult = RETURN_CODE_EMAIL_FAILED;
