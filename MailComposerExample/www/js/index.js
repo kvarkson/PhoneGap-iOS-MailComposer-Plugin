@@ -32,6 +32,7 @@ var fileUrl = '',
         },
 
         takePhoto: function() {
+            console.log(navigator);
             navigator.camera.getPicture(this.onSuccess, this.onFail, { quality: 50, 
                 destinationType: Camera.DestinationType.FILE_URI });
         },
