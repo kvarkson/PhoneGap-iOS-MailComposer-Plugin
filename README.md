@@ -5,13 +5,13 @@ PhoneGap plugin for showing Mail Composer View in iOS with predefined fields.
 
 #Installing the plugin
 
-Copy MailComposer.h and MailComposer.m files to your Classes folder and MailComposer.js file to 'www/js/plugins' folder.
+Copy MailComposer.h and MailComposer.m files to your Plugins folder and MailComposer.js file to 'www/js/plugins' folder.
 
 Add js file to your index.html.
 
     <script type="text/javascript" src="js/plugins/MailComposer.js"></script>
 
-Then add the following code to your <code>config.xml</code>:
+Then add the following code to your config.xml:
 
 	<feature name="MailComposer">
 		<param name="ios-package" value="MailComposer" />
