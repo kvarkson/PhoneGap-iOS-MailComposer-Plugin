@@ -11,9 +11,9 @@
 #import <Cordova/CDVPlugin.h>
 
 @interface MailComposer : CDVPlugin <MFMailComposeViewControllerDelegate>
-
+    
 - (NSString *)getMimeTypeFromFileExtension:(NSString *)extension;
 - (void)returnWithCode:(int)code;
 - (void)showMailComposer:(CDVInvokedUrlCommand *)command;
     
-@end
+    @end

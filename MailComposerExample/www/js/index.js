@@ -50,7 +50,8 @@ var fileUrl = '',
             MailComposer.ccRecipients = ['user1@example.com', 'user2@example.com'];
             MailComposer.bccRecipients = ['user3@example.com', 'user4@example.com'];
             MailComposer.subject = 'Subject is here';
-            MailComposer.body = 'This is the body';
+            MailComposer.isHtml = true;
+            MailComposer.body = '<p>This is the body</p>';
             MailComposer.attachments = [fileUrl];
             MailComposer.showMailComposer(function(result){console.log(result);});
         }

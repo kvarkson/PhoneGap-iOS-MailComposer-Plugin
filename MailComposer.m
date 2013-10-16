@@ -21,16 +21,21 @@
 #define SUBJECT_KEY        @"subject"
 #define BODY_KEY           @"body"
 #define ATTACHMENTS_KEY    @"attachments"
-#define IS_HTML_KEY        @"isHTML"
+#define IS_HTML_KEY        @"isHtml"
 
-@implementation MailComposer 
-
+@implementation MailComposer
+    
 - (void)showMailComposer:(CDVInvokedUrlCommand *)command {
+    if (![MFMailComposeViewController canSendMail]) {
+        NSLog(@"Mail not configured");
+        UIAlertView *mailNotConfiguredAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your email account" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [mailNotConfiguredAlert show];
+        return;
+    }
     if ([command.arguments count]) {
         NSDictionary *parameters = command.arguments[0];
         [self showEmailComposerWithParameters:parameters];
-    }
-    else {
+    } else {
         NSLog(@"warning: missed arguments");
     }
 }
@@ -88,8 +93,8 @@
     
     [self.viewController presentModalViewController:mailController animated:YES];
 }
-
-// Retrieve the mime type from the file extension
+    
+    // Retrieve the mime type from the file extension
 - (NSString *)getMimeTypeFromFileExtension:(NSString *)extension {
     if (!extension) {
         return nil;
@@ -109,29 +114,29 @@
     
     switch (result) {
         case MFMailComposeResultCancelled:
-			webviewResult = RETURN_CODE_EMAIL_CANCELLED;
-            break;
+        webviewResult = RETURN_CODE_EMAIL_CANCELLED;
+        break;
         case MFMailComposeResultSaved:
-			webviewResult = RETURN_CODE_EMAIL_SAVED;
-            break;
+        webviewResult = RETURN_CODE_EMAIL_SAVED;
+        break;
         case MFMailComposeResultSent:
-			webviewResult = RETURN_CODE_EMAIL_SENT;
-            break;
+        webviewResult = RETURN_CODE_EMAIL_SENT;
+        break;
         case MFMailComposeResultFailed:
-            webviewResult = RETURN_CODE_EMAIL_FAILED;
-            break;
+        webviewResult = RETURN_CODE_EMAIL_FAILED;
+        break;
         default:
-			webviewResult = RETURN_CODE_EMAIL_NOTSENT;
-            break;
+        webviewResult = RETURN_CODE_EMAIL_NOTSENT;
+        break;
     }
-
+    
     [controller dismissViewControllerAnimated:YES completion:nil];
     [self returnWithCode:webviewResult];
 }
-
-
+    
+    
 - (void)returnWithCode:(int)code {
     [self writeJavascript:[NSString stringWithFormat:@"MailComposer._didFinishWithResult(%d);", code]];
 }
-
-@end
+    
+    @end
