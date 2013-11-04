@@ -1,7 +1,7 @@
 PhoneGap-iOS-MailComposer-Plugin
 ================================================
 
-PhoneGap plugin for showing Mail Composer View in iOS with predefined fields. It's remake of [EmailComposerWithAttachments](https://github.com/phonegap/phonegap-plugins/tree/master/iOS/EmailComposerWithAttachments) repo.
+PhoneGap plugin for showing Mail Composer View in iOS with predefined fields. It's remake of [EmailComposerWithAttachments](https://github.com/phonegap/phonegap-plugins/tree/master/iOS/EmailComposerWithAttachments) repo for PhoneGap 3.0+.
 
 #Installing the plugin
 
